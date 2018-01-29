@@ -1,25 +1,61 @@
 <head>
-  <title>Entrepeneur</title>
+  <title>On s'entraide</title>
 </head>
 
 <body>
-  <h1>Welcome to Meteor!</h1>
+  <header>
+    <h1>ON S'ENTRAIDE</h1>
+    <a href="#">Proposer son aide</a>
+    <a href="#">Gérer mes aides et rencontres</a>
 
-  {{> hello}}
-  {{> info}}
-</body>
+  </header>
 
-<template name="hello">
-  <button>Click Me</button>
-  <p>You've pressed the button {{counter}} times.</p>
-</template>
+  <img src="http://www.lamaisonduboncafe.com/media/catalog/category/banniere-categorie-default-cafe_6.jpg" alt=""/>
 
-<template name="info">
-  <h2>Learn Meteor!</h2>
-  <ul>
-    <li><a href="https://www.meteor.com/try" target="_blank">Do the Tutorial</a></li>
-    <li><a href="http://guide.meteor.com" target="_blank">Follow the Guide</a></li>
-    <li><a href="https://docs.meteor.com" target="_blank">Read the Docs</a></li>
-    <li><a href="https://forums.meteor.com" target="_blank">Discussions</a></li>
+  <input type="search" name="search_bar" value="">
+
+  <ul class="collection">
+    <li class="collection-item avatar">
+      <span class="title">Cours de piano</span>
+      <p>Vincent Aubert
+        <br>
+
+      </p>
+      <a href="#!" class="secondary-content">
+        <i class="material-icons">interessé</i>
+      </a>
+    </li>
+    <li class="collection-item avatar">
+      <i class="material-icons circle"></i>
+      <span class="title">Conseils Meteor</span>
+      <p>Julien Courtial
+        <br>
+
+      </p>
+      <a href="#!" class="secondary-content">
+        <i class="material-icons">interessé</i>
+      </a>
+    </li>
+    <li class="collection-item avatar">
+      <i class="material-icons circle green"></i>
+      <span class="title">Conseils Juridique</span>
+      <p>Nicolas Sarkozy<br>
+
+      </p>
+      <a href="#!" class="secondary-content">
+        <i class="material-icons">interessé</i>
+      </a>
+    </li>
+    <li class="collection-item avatar">
+      <i class="material-icons circle red"></i>
+      <span class="title">Garde d'enfants</span>
+      <p>Madelaine
+        <br>
+
+      </p>
+      <a href="#!" class="secondary-content">
+        <i class="material-icons">interessé</i>
+      </a>
+    </li>
   </ul>
-</template>
+</body>
