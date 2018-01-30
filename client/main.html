@@ -5,12 +5,18 @@
 <body>
   <header>
     <h1>ON S'ENTRAIDE</h1>
-    <a href="#">Proposer son aide</a>
-    <a href="#">Gérer mes aides et rencontres</a>
+    <p class="proposer">
+      Proposer son aide
+    </p>
+    <p class="gestion">Gérer mes aides et rencontres</p>
+    <img src="cafe.jpg" alt="cafe"/>
 
   </header>
 
-  <img src="http://www.lamaisonduboncafe.com/media/catalog/category/banniere-categorie-default-cafe_6.jpg" alt=""/>
+  {{> Template.dynamic template=template_name}}
+</body>
+
+<template name="Accueil">
 
   <input type="search" name="search_bar" value="">
 
@@ -58,4 +64,4 @@
       </a>
     </li>
   </ul>
-</body>
+</template>

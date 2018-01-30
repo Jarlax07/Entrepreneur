@@ -1,22 +1,25 @@
 import { Template } from 'meteor/templating';
 import { ReactiveVar } from 'meteor/reactive-var';
+import { Session } from 'meteor/session';
 
 import './main.html';
 
-Template.hello.onCreated(function helloOnCreated() {
-  // counter starts at 0
-  this.counter = new ReactiveVar(0);
+Meteor.startup(function(){
+    Session.setDefault("template_name", "Accueil");
 });
 
-Template.hello.helpers({
-  counter() {
-    return Template.instance().counter.get();
-  },
+Template.body.helpers({
+  template_name : function(){
+    return  Session.get("template_name")
+  }
 });
 
-Template.hello.events({
-  'click button'(event, instance) {
-    // increment the counter when button is clicked
-    instance.counter.set(instance.counter.get() + 1);
+
+Template.body.events({
+  "click .proposer": function(event, instance){
+     Session.set("template_name","Proposer");
   },
+  "click .gestion":function(event,instance){
+    Session.set("template_name","Gestion")
+  }
 });
