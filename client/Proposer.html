@@ -1,0 +1,56 @@
+<template name="Proposer">
+  <form id="proposition">
+    Titre :
+    <input type="text" name="titre" value="Le titre de votre aide">
+    <br>
+    Description
+    <br>
+    <textarea name="description" rows="4" cols="40"></textarea>
+    <br>
+    Choix de mots-clés
+    <input type="text" name="keywords" value="">
+    <br>
+    Vous êtes disponible :
+    <br>
+    <div class="creneau">
+      <input id="choix1" type="radio" name="horaire1" value="creneau">
+      Une ou plusieurs fois par semaine
+      <br>
+      {{#if creneau}}
+        <form>
+          {{>choixjour}}
+          {{nbcreneau}}
+          <button class="add" id="ajoutchoixjour">+</button>
+          <br>
+        </form>
+      {{/if}}
+    </div>
+    <div class="precis">
+      <input id="choix2" type="radio" name="horaire2" value="precis">
+      Date précise<br>
+      {{#if precis}}
+        COUCOU
+        <br>
+      {{/if}}
+    </div>
+  </form>
+
+</template>
+
+<template name="choixjour">
+
+  Le
+  <select name="creneau" size="1">
+    <option>Lundi</option>
+    <option>Mardi</option>
+    <option>Mercredi</option>
+    <option>Jeudi</option>
+    <option>Vendredi</option>
+    <option>Samedi</option>
+    <option>Dimanche</option>
+  </select>
+  de
+  <input type="time" name="starthour">
+  à
+  <input type="time" name="endhour">
+</template>

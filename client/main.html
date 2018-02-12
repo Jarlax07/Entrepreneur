@@ -4,7 +4,7 @@
 
 <body>
   <header>
-    <h1>ON S'ENTRAIDE</h1>
+    <h1 class="accueil">ON S'ENTRAIDE</h1>
     <p class="proposer">
       Proposer son aide
     </p>
@@ -15,53 +15,3 @@
 
   {{> Template.dynamic template=template_name}}
 </body>
-
-<template name="Accueil">
-
-  <input type="search" name="search_bar" value="">
-
-  <ul class="collection">
-    <li class="collection-item avatar">
-      <span class="title">Cours de piano</span>
-      <p>Vincent Aubert
-        <br>
-
-      </p>
-      <a href="#!" class="secondary-content">
-        <i class="material-icons">interessé</i>
-      </a>
-    </li>
-    <li class="collection-item avatar">
-      <i class="material-icons circle"></i>
-      <span class="title">Conseils Meteor</span>
-      <p>Julien Courtial
-        <br>
-
-      </p>
-      <a href="#!" class="secondary-content">
-        <i class="material-icons">interessé</i>
-      </a>
-    </li>
-    <li class="collection-item avatar">
-      <i class="material-icons circle green"></i>
-      <span class="title">Conseils Juridique</span>
-      <p>Nicolas Sarkozy<br>
-
-      </p>
-      <a href="#!" class="secondary-content">
-        <i class="material-icons">interessé</i>
-      </a>
-    </li>
-    <li class="collection-item avatar">
-      <i class="material-icons circle red"></i>
-      <span class="title">Garde d'enfants</span>
-      <p>Madelaine
-        <br>
-
-      </p>
-      <a href="#!" class="secondary-content">
-        <i class="material-icons">interessé</i>
-      </a>
-    </li>
-  </ul>
-</template>
