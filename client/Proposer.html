@@ -1,5 +1,7 @@
 <template name="Proposer">
   <form id="proposition">
+    <fieldset>
+      <legend>Descriptif de l'offre</legend>
     Titre :
     <input type="text" name="titre" value="Le titre de votre aide">
     <br>
@@ -17,22 +19,23 @@
       Une ou plusieurs fois par semaine
       <br>
       {{#if creneau}}
-        <form>
-          {{>choixjour}}
-          {{nbcreneau}}
-          <button class="add" id="ajoutchoixjour">+</button>
-          <br>
-        </form>
-      {{/if}}
-    </div>
-    <div class="precis">
-      <input id="choix2" type="radio" name="horaire2" value="precis">
-      Date précise<br>
-      {{#if precis}}
-        COUCOU
+        <div id="newcreneau">{{>choixjour}}</div>
+        <input class="add" type="button" value="+">
+        {{test}}
         <br>
       {{/if}}
     </div>
+    <div class="precis">
+      <input id="choix2" type="radio" name="horaire1" value="precis">
+      Date précise<br>
+      {{#if precis}}
+        {{>precisedatechoice}}
+        <br>
+      {{/if}}
+    </div>
+    <input type="submit" value="Envoyer">
+
+  </fieldset>
   </form>
 
 </template>
@@ -40,7 +43,7 @@
 <template name="choixjour">
 
   Le
-  <select name="creneau" size="1">
+  <select name="creneau1" size="1">
     <option>Lundi</option>
     <option>Mardi</option>
     <option>Mercredi</option>
@@ -53,4 +56,11 @@
   <input type="time" name="starthour">
   à
   <input type="time" name="endhour">
+</template>
+
+<template name="precisedatechoice">
+  Avant le
+  {{today}}
+  :
+  <input type="date" name="precisedate" min={{today}}>
 </template>
