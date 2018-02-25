@@ -16,9 +16,6 @@ Template.body.helpers({
 
 
 Template.body.events({
-  "click .proposer": function(event, instance){
-     Session.set("template_name","Proposer");
-  },
   "click .gestion":function(event,instance){
     Session.set("template_name","Gestion")
   },
@@ -26,3 +23,14 @@ Template.body.events({
     Session.set("template_name","Accueil");
   },
 });
+
+
+Router.route('/', function () {
+  this.render('Accueil');
+});
+Router.route('/Accueil');
+Router.route('/Proposer');
+Router.route('/Gestion');
+
+// Checker si la personne est connecté sinon lui demander de se connecter ou s'inscrire
+Router.route('/Connexion');

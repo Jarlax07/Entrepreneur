@@ -18,6 +18,7 @@ Template.Proposer.helpers({
 });
 
 Template.Proposer.events({
+  // display the choice of time windows
   'click .creneau': function(event, instance){
     instance.creneau.set(true);
     instance.precis.set(false);
@@ -25,23 +26,23 @@ Template.Proposer.events({
     document.getElementById("choix1").checked = true;
     document.getElementById("choix2").checked = false;
   },
+  // display the choice of an exact date and hour
   'click .precis': function(event,instance){
     instance.creneau.set(false);
     instance.precis.set(true);
     document.getElementById("choix1").checked = false;
     document.getElementById("choix2").checked = true;
   },
+  // add a time window
   'click .add':function(event,instance){
     instance.nbcreneau.set(instance.nbcreneau.get()+1);
     var field = "<br>Le <select name='creneau"+instance.nbcreneau.get()+"' size='1'><option>Lundi</option><option>Mardi</option><option>Mercredi</option><option>Jeudi</option><option>Vendredi</option><option>Samedi</option><option>Dimanche</option></select> de <input type='time' name='starthour'> à <input type='time' name='endhour'>";
     instance.find("#newcreneau").innerHTML += field;
   },
-  'click .submit':function(event,instance){
-    Session.set("template_name","Coordonnees");
-  }
 });
 
 Template.precisedatechoice.helpers({
+  // return today's date
   today:function(){
     var date = new Date();
     var dd = date.getDate();
