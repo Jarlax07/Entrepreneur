@@ -10,7 +10,9 @@
     <a href="/Gestion">Gérer mes aides et rencontres</a>
     {{> loginButtons}}
     <br>
+    {{#if currentUser}}
     {{username}}
+    {{/if}}
     <img src="cafe.jpg" alt="cafe"/>
 
   </header>

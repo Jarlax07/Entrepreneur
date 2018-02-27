@@ -13,7 +13,7 @@ Meteor.startup(function(){
 Template.body.helpers({
   username :function(){
     return PlayersList.find();
-  }
+  },
 });
 
 
