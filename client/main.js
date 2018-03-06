@@ -6,20 +6,19 @@ import { Mongo } from 'meteor/mongo';
 import './main.html';
 
 Meteor.startup(function(){
-  PlayersList = new Mongo.Collection('players');
+
+  Session.setDefault("form", null);
+  //Session.setDefault("title", "wsh");
 
 });
 
-Template.body.helpers({
-  username :function(){
-    return PlayersList.find();
-  },
-});
 
-
-Template.body.events({
-});
-
+Template.body.onCreated(
+  function(){
+    Meteor.subscribe('HelpMembersList');
+    HelpMembersList = new Mongo.Collection('members');
+  }
+);
 
 Router.route('/', function () {
   this.render('Accueil');

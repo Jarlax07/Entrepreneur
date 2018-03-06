@@ -3,7 +3,7 @@
     <fieldset>
       <legend>Descriptif de l'offre</legend>
     Titre :
-    <input type="text" name="titre" placeholder="Le titre de votre aide">
+    <input type="text" name="title" placeholder="Le titre de votre aide">
     <br>
     Description
     <br>
@@ -19,7 +19,7 @@
       Une ou plusieurs fois par semaine
       <br>
       {{#if creneau}}
-        <div id="newcreneau">{{>choixjour}}</div>
+        <div id="newcreneau">{{>dayschoice}}</div>
         <input class="add" type="button" value="+">
         {{test}}
         <br>
@@ -35,7 +35,7 @@
     </div>
 
     Dans quel café ?
-    <select name="cafe" size="1">
+    <select name="coffee" size="1">
       <option>Des'Alter Cafe</option>
     </select>
   <br>
@@ -46,7 +46,7 @@
 
 </template>
 
-<template name="choixjour">
+<template name="dayschoice">
 
   Le
   <select name="creneau1" size="1">

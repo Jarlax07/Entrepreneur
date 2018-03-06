@@ -2,9 +2,11 @@ import { Meteor } from 'meteor/meteor';
 
 Meteor.startup(() => {
   // code to run on server at startup
-  PlayersList = new Mongo.Collection("players");
+  HelpMembersList = new Mongo.Collection("members");
 
-  PlayersList.insert({name:"david"});
-  PlayersList.insert({name:"julien"});
-  PlayersList.insert({name:"vincent"});
+  Meteor.publish('HelpMembersList', function(){
+    var currentUserId = this.userId;
+    return HelpMembersList.find();
+  });
+
 });

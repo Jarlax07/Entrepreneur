@@ -39,6 +39,31 @@ Template.Proposer.events({
     var field = "<br>Le <select name='creneau"+instance.nbcreneau.get()+"' size='1'><option>Lundi</option><option>Mardi</option><option>Mercredi</option><option>Jeudi</option><option>Vendredi</option><option>Samedi</option><option>Dimanche</option></select> de <input type='time' name='starthour'> à <input type='time' name='endhour'>";
     instance.find("#newcreneau").innerHTML += field;
   },
+
+  'submit form': function(event){
+    event.preventDefault();
+    var TitleVar = event.target.title.value;
+    var DescriptionVar = event.target.description.value;
+    var KeywordsVar = event.target.keywords.value;
+    var CoffeeVar = event.target.coffee.value;
+    //Session.set('title',TitleVar);
+    //console.log(Session.get('title'));
+    Session.set('form',{
+      title: TitleVar,
+      description: DescriptionVar,
+      keywords : KeywordsVar,
+      coffee : CoffeeVar
+    });
+    //document.location.href="/Connexion";
+    Router.go("/Connexion");
+    // HelpMembersList.insert({
+    //     title: TitleVar,
+    //     description: DescriptionVar,
+    //     keywords : KeywordsVar,
+    //     coffee : CoffeeVar
+    // });
+}
+
 });
 
 Template.precisedatechoice.helpers({
@@ -59,4 +84,7 @@ Template.precisedatechoice.helpers({
 
     return yyyy + '-' + mm + '-' + dd;
   }
+
+
+
 });
