@@ -1,47 +1,49 @@
 <template name="Proposer">
-  <form id="proposition" method="post" action="/Connexion">
+  <form id="proposition" method="post">
     <fieldset>
       <legend>Descriptif de l'offre</legend>
-    Titre :
-    <input type="text" name="titre" placeholder="Le titre de votre aide">
-    <br>
-    Description
-    <br>
-    <textarea name="description" rows="4" cols="40"></textarea>
-    <br>
-    Choix de mots-clés
-    <input type="text" name="keywords" value="">
-    <br>
-    Vous êtes disponible :
-    <br>
-    <div class="creneau">
-      <input id="choix1" type="radio" name="horaire1" value="creneau">
-      Une ou plusieurs fois par semaine
-      <br>
-      {{#if creneau}}
-        <div id="newcreneau">{{>choixjour}}</div>
-        <input class="add" type="button" value="+">
-        {{test}}
-        <br>
-      {{/if}}
-    </div>
-    <div class="precis">
-      <input id="choix2" type="radio" name="horaire1" value="precis">
-      Date précise<br>
-      {{#if precis}}
-        {{>precisedatechoice}}
-        <br>
-      {{/if}}
-    </div>
+      <div id="divform">
 
-    Dans quel café ?
-    <select name="cafe" size="1">
-      <option>Des'Alter Cafe</option>
-    </select>
-  <br>
-    <input type="submit" value="Envoyer">
+        Titre : (30 caractères max)
+        <input type="text" name="titre" placeholder="Le titre de votre aide" maxlength="30">
+        <br>
+        Description : (100 caractères max)
+        <br>
+        <textarea name="description" rows="4" cols="40" maxlength="100"></textarea>
+        <br>
+        Choix de mots-clés
+        <input type="text" name="keywords" value="">
+        <br>
+        Vous êtes disponible :
+        <br>
+        <div class="creneau">
+          <input id="choix1" type="radio" name="horaire1" value="creneau">
+          Une ou plusieurs fois par semaine
+          <br>
+          {{#if creneau}}
+            <div id="newcreneau">{{>choixjour}}</div>
+            <input class="add" type="button" value="+">
+            {{test}}
+            <br>
+          {{/if}}
+        </div>
+        <div class="precis">
+          <input id="choix2" type="radio" name="horaire1" value="precis">
+          Date précise<br>
+          {{#if precis}}
+            {{>precisedatechoice}}
+            <br>
+          {{/if}}
+        </div>
 
-  </fieldset>
+        Dans quel café ?
+        <select name="cafe" size="1">
+          <option>Des'Alter Cafe</option>
+        </select>
+        <br>
+        <input type="submit" value='{{submit_button}}'>
+      </div>
+    </fieldset>
   </form>
 
 </template>
@@ -68,5 +70,6 @@
   Avant le
   {{today}}
   :
-  <input type="date" name="precisedate" min={{today}}>
+  <input type="date" name="precisedate" min='{{today}}'>
+  <input type="time" name="precisehour">
 </template>

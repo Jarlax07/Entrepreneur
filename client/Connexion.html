@@ -1,12 +1,14 @@
 <template name="Connexion">
   <form id="coord">
     <fieldset>
-
-      Pseudo : <input type="text" name="pseudo">
+      <div id="error" style="color:red;"></div>
+      Pseudo ou Email :
+      <input type="text" id="pseudo" name="pseudo" class="pseudo">
       <br>
-      Mot de passe : <input type="password" name="psw">
+      Mot de passe :
+      <input id="psw" type="password" name="psw">
       <br>
-      <input type="submit" value="Connexion">
+      <input class="button" type="button" value="Connexion">
     </fieldset>
   </form>
 </template>

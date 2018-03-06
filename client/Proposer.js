@@ -1,6 +1,5 @@
 import { Template } from 'meteor/templating';
 import { ReactiveVar } from 'meteor/reactive-var';
-import { Session } from 'meteor/session';
 
 Template.Proposer.onCreated(function(){
   this.creneau = new ReactiveVar(false);
@@ -15,6 +14,13 @@ Template.Proposer.helpers({
   precis:function(){
     return Template.instance().precis.get();
   },
+  submit_button:function(){
+    if(Meteor.userId()){
+      return "Poster mon aide";
+    }else{
+      return "Valider";
+    }
+  }
 });
 
 Template.Proposer.events({
@@ -39,6 +45,19 @@ Template.Proposer.events({
     var field = "<br>Le <select name='creneau"+instance.nbcreneau.get()+"' size='1'><option>Lundi</option><option>Mardi</option><option>Mercredi</option><option>Jeudi</option><option>Vendredi</option><option>Samedi</option><option>Dimanche</option></select> de <input type='time' name='starthour'> à <input type='time' name='endhour'>";
     instance.find("#newcreneau").innerHTML += field;
   },
+  // rajouter un event d'insertion
+  'submit':function(event,instance){
+    if(Meteor.userId()){
+      // TODO AJOUT FONCTION INSERTION COLLECTION
+      instance.find("#divform").innerHTML = null;
+      instance.find("#divform").innerHTML += "Votre proposition d'aide a bien été enregistré.<br> <a href='/'>Retourner sur la page d'accueil</a>";
+    }else{
+      Router.go("/Inscription");
+    }
+
+    //Empeche la redirection
+    return false;
+  }
 });
 
 Template.precisedatechoice.helpers({
