@@ -4,15 +4,20 @@
 
 <body>
   <header>
-    <h1 class="accueil"><a href="/Accueil">ON S'ENTRAIDE</a></h1>
+    <h1 class="accueil">
+      <a href="/">ON S'ENTRAIDE</a>
+    </h1>
 
-      <a href="/Proposer">Proposer son aide</a>
+    <a href="/Proposer">Proposer son aide</a>
     <a href="/Gestion">Gérer mes aides et rencontres</a>
     {{> loginButtons}}
     <br>
 
     {{#if currentUser}}
+
     <!-- Quand on est conenctée -->
+      {{username}}
+
     {{/if}}
     <img src="cafe.jpg" alt="cafe"/>
 

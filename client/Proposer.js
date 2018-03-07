@@ -1,6 +1,5 @@
 import { Template } from 'meteor/templating';
 import { ReactiveVar } from 'meteor/reactive-var';
-import { Session } from 'meteor/session';
 
 Template.Proposer.onCreated(function(){
   this.creneau = new ReactiveVar(false);
@@ -15,6 +14,13 @@ Template.Proposer.helpers({
   precis:function(){
     return Template.instance().precis.get();
   },
+  submit_button:function(){
+    if(Meteor.userId()){
+      return "Poster mon aide";
+    }else{
+      return "Valider";
+    }
+  }
 });
 
 Template.Proposer.events({
@@ -39,31 +45,41 @@ Template.Proposer.events({
     var field = "<br>Le <select name='creneau"+instance.nbcreneau.get()+"' size='1'><option>Lundi</option><option>Mardi</option><option>Mercredi</option><option>Jeudi</option><option>Vendredi</option><option>Samedi</option><option>Dimanche</option></select> de <input type='time' name='starthour'> à <input type='time' name='endhour'>";
     instance.find("#newcreneau").innerHTML += field;
   },
+  // rajouter un event d'insertion
+  'submit':function(event,instance){
+    if(Meteor.userId()){
+      data = Session.get('form');
+      HelpMembersList.insert({
+        title: data.title,
+        description: data.description,
+        keywords : data.keywords,
+        coffee : data.coffee
+      });
 
-  'submit form': function(event){
-    event.preventDefault();
-    var TitleVar = event.target.title.value;
-    var DescriptionVar = event.target.description.value;
-    var KeywordsVar = event.target.keywords.value;
-    var CoffeeVar = event.target.coffee.value;
-    //Session.set('title',TitleVar);
-    //console.log(Session.get('title'));
-    Session.set('form',{
-      title: TitleVar,
-      description: DescriptionVar,
-      keywords : KeywordsVar,
-      coffee : CoffeeVar
-    });
-    //document.location.href="/Connexion";
-    Router.go("/Connexion");
-    // HelpMembersList.insert({
-    //     title: TitleVar,
-    //     description: DescriptionVar,
-    //     keywords : KeywordsVar,
-    //     coffee : CoffeeVar
-    // });
-}
+      Session.set('form',null);
+      instance.find("#divform").innerHTML = null;
+      instance.find("#divform").innerHTML += "Votre proposition d'aide a bien été enregistré.<br> <a href='/'>Retourner sur la page d'accueil</a>";
+    }else{
+      event.preventDefault();
+      var TitleVar = event.target.title.value;
+      var DescriptionVar = event.target.description.value;
+      var KeywordsVar = event.target.keywords.value;
+      var CoffeeVar = event.target.coffee.value;
+      //Session.set('title',TitleVar);
+      //console.log(Session.get('title'));
+      Session.set('form',{
+        title: TitleVar,
+        description: DescriptionVar,
+        keywords : KeywordsVar,
+        coffee : CoffeeVar
+      });
+      console.log();
+      Router.go("/Inscription");
+    }
 
+    //Empeche la redirection
+    return false;
+  }
 });
 
 Template.precisedatechoice.helpers({

@@ -1,0 +1,21 @@
+<template name="Inscription">
+  <form id="inscr" method="post">
+    <fieldset>
+      <div id="error" style="color:red;"></div>
+
+      <div id="divform">
+        <!-- Checker le nombre de caractère -->
+        Pseudo * :
+        <input type="text" id="pseudo" name="pseudo" class="pseudo" minlength="5" required="required">
+        <br>
+        Email * :
+        <input type="email" id="email" name="email" class="mail" required="required">
+        <br>
+        Mot de passe * :
+        <input type="password" name="psw" id="psw" minlength="8" required="required">
+        <br>
+        <input type="submit" value="Poster son aide">
+      </div>
+    </fieldset>
+  </form>
+</template>
