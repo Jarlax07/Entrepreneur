@@ -45,22 +45,21 @@ Template.Proposer.events({
     var field = "<br>Le <select name='creneau"+instance.nbcreneau.get()+"' size='1'><option>Lundi</option><option>Mardi</option><option>Mercredi</option><option>Jeudi</option><option>Vendredi</option><option>Samedi</option><option>Dimanche</option></select> de <input type='time' name='starthour'> à <input type='time' name='endhour'>";
     instance.find("#newcreneau").innerHTML += field;
   },
-  // rajouter un event d'insertion
   'submit':function(event,instance){
+
+      // event.preventDefault();
     if(Meteor.userId()){
-      data = Session.get('form');
+      //TODO rajouter les autres champs
       HelpMembersList.insert({
-        title: data.title,
-        description: data.description,
-        keywords : data.keywords,
-        coffee : data.coffee
+        title: event.target.title.value,
+        description: event.target.description.value,
+        keywords : event.target.keywords.value,
+        coffee : event.target.coffee.value
       });
 
-      Session.set('form',null);
       instance.find("#divform").innerHTML = null;
       instance.find("#divform").innerHTML += "Votre proposition d'aide a bien été enregistré.<br> <a href='/'>Retourner sur la page d'accueil</a>";
     }else{
-      event.preventDefault();
       var TitleVar = event.target.title.value;
       var DescriptionVar = event.target.description.value;
       var KeywordsVar = event.target.keywords.value;
@@ -73,7 +72,6 @@ Template.Proposer.events({
         keywords : KeywordsVar,
         coffee : CoffeeVar
       });
-      console.log();
       Router.go("/Inscription");
     }
 
