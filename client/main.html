@@ -10,14 +10,12 @@
 
     <a href="/Proposer">Proposer son aide</a>
     <a href="/Gestion">Gérer mes aides et rencontres</a>
-    {{> loginButtons}}
-    <br>
-
     {{#if currentUser}}
-
-    <!-- Quand on est conenctée -->
+      <!-- Quand on est conenctée -->
       {{username}}
-
+      <a class="logout" href="">Se déconnecter</a>
+    {{else}}
+      <a href="/Connexion">Se connecter</a>
     {{/if}}
     <img src="cafe.jpg" alt="cafe"/>
 

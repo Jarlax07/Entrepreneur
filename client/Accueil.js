@@ -1,16 +1,14 @@
-import { Template } from 'meteor/templating';
-import { ReactiveVar } from 'meteor/reactive-var';
-import { Session } from 'meteor/session';
-import { Accounts } from 'meteor/accounts-base';
-import { Mongo } from 'meteor/mongo';
-
+import {Template} from 'meteor/templating';
+import {ReactiveVar} from 'meteor/reactive-var';
+import {Session} from 'meteor/session';
+import {Accounts} from 'meteor/accounts-base';
+import {Mongo} from 'meteor/mongo';
 
 Template.Accueil.helpers({
-  username : function(){
-    return HelpMembersList.find();
+  username: function() {
+    return HelpMembersList.find({status: "envoyé"});
   }
 });
-
 
 // Template.Accueil.onCreated = function(){
 //     Meteor.subscribe('HelpMembersList');
@@ -18,5 +16,4 @@ Template.Accueil.helpers({
 //
 //   }
 
-Template.Accueil.onRendered = function(){
-  }
+Template.Accueil.onRendered = function() {}
